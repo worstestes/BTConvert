@@ -15,7 +15,6 @@ export const fetchUserLoading = (state) => ({
 })
 
 export const fetchCurrenciesSuccess = (state, action) => {
-  console.log(action)
   return {
     ...state,
     user: null,

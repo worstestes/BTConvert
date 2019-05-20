@@ -7,7 +7,7 @@ import CurrencyListItem from './CurrencyListitem'
 const CurrencyList = ({ data }) => {
 return (
 <FlatList style={styles.container}  data={data}
-  renderItem={({item}) => <CurrencyListItem name={item.key} rate={item.rate_float} />}
+  renderItem={({item}) => <CurrencyListItem abbreviation={item.key} rate={item.rate_float} symbol={item.symbol} name={item.name} />}
   />
 )
  
