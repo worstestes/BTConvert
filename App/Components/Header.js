@@ -1,23 +1,26 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, ViewPropTypes, StyleSheet } from 'react-native'
 
 import MainText from './MainText'
+import Icon from './Icon'
+
+const menu = require('../Images/menu.png')
 
 class Header extends Component {
   render() {
-    const { title, titleStyle, children, onTitlePress } = this.props
+    const { title, titleStyle, children, onMenuPress } = this.props
+    const menuIcon = <Icon source={menu} containerStyle={{ position: 'absolute', left: 12 }} onPress={onMenuPress} />
 
     const headerTitle = title ? (
       <MainText style={titleStyle ? titleStyle : styles.headerText}>{title}</MainText>
     ) : null
     return (
       <View style={[styles.container]}>
+        {menuIcon}
         <View style={styles.header}>
           {headerTitle}
-          <TouchableOpacity onPress={onTitlePress}>
           {children}
-          </TouchableOpacity>
         </View>
       </View>
     )
@@ -32,8 +35,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     backgroundColor: '#ED9095',
-
-
+    flexDirection: 'row',
   },
   header: {
     flexDirection: 'row',
@@ -44,13 +46,16 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 22,
     fontWeight: 'bold',
-    letterSpacing: 0.9,   
-    color: '#1F0A2E' 
+    letterSpacing: 0.9,
+    color: '#1F0A2E',
   },
 })
 
 Header.propTypes = {
-  //   icons: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  titleStyle: ViewPropTypes.style,
+  children: PropTypes.node,
+
 }
 
 export default Header

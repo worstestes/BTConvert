@@ -7,11 +7,13 @@ import MainLayout from '../../Components/MainLayout'
 import CurrencyList from '../../Components/CurrencyList'
 import LoadingIndicator from '../../Components/LoadingIndicator'
 import SortingMenu from '../../Components/SortingMenu'
+import SelectedSortTitle from '../../Components/SelectedSortTitle'
 
 class Home extends Component {
   state = {
-    selected: 'europe',
+    selected: { name: 'All', type: null},
     options: [
+      { name: 'All', type: null},
      { name: 'Popular', type: 'mainCurrencies'},
      { name: 'North America', type: 'northAmerica'},
      { name: 'South America', type: 'southAmerica'},
@@ -32,8 +34,8 @@ class Home extends Component {
     })
   }
 
-  onSelectSortType = type => {
-    let updated = this.state.selected === type ? null : type
+  onSelectSortType = option => {
+    let updated = this.state.selected.type === option.type ? null : option
     this.setState({
       selected: updated
     })
@@ -41,18 +43,15 @@ class Home extends Component {
 
   render() {
     const { selected, sortingMenuEnabled, options } = this.state
-    let currencyData = this.props.currencies ? this.props.currencies : null
-    if(selected) {
-      currencyData = currencyData.filter(currency => currency.regionType[selected]).sort((a,b) => {
-        console.log(a)
-        if(a.key === 'USD') {
-          return 1
-        }
-      })
+    const { currencies } = this.props
+    let currencyData = currencies ? currencies : null
+    if(selected.type) {
+      currencyData = currencyData.filter(currency => currency.regionType[selected.type])
     }
+
     return (
       <MainLayout title='Home' menuEnabled={sortingMenuEnabled} onTitlePress={this.onSortMenuPress}>
-        {sortingMenuEnabled ? <SortingMenu options={options} selected={selected} onOptionPress={this.onSelectSortType} /> : null}
+        {sortingMenuEnabled ? <SortingMenu options={options} selected={selected} onOptionPress={this.onSelectSortType} /> : <SelectedSortTitle selected={selected.name}/>}
         {currencyData && currencyData.length ? <CurrencyList data={currencyData} /> : <LoadingIndicator />}
       </MainLayout>
     )

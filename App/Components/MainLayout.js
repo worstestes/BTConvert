@@ -1,27 +1,29 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { SafeAreaView, ScrollView, Image, StyleSheet, ViewPropTypes } from 'react-native'
+import { SafeAreaView, StyleSheet, ViewPropTypes } from 'react-native'
 import Header from './Header'
+import Icon from './Icon'
+
+import { withNavigation } from 'react-navigation';
+
 let chevron = require('../Images/chevron.png')
 
 class MainLayout extends Component {
-  state = {
-  }
-
   render() {
     const {
     title,
-      listStyle,
       children,
       style,
       menuEnabled,
-      onTitlePress
+      onTitlePress,
+      onMenuPress,
+      navigation: { openDrawer }
     } = this.props
-    const sortMenuIcon = <Image source={chevron} style={{width: 25, height: 25, transform: [{ rotate: menuEnabled ? '180deg' : '0deg'}]}} resizeMode='contain' />
+    const sortMenuIcon = onTitlePress ? <Icon source={chevron} imageStyle={{transform: [{ rotate: menuEnabled ? '180deg' : '0deg'}]}} onPress={onTitlePress} /> : null
 
     return (
       <SafeAreaView style={styles.mainContainer}>
-        <Header title={title} onTitlePress={onTitlePress}>
+        <Header title={title} onMenuPress={() => openDrawer()}>
             {sortMenuIcon}
         </Header>
             {children}
@@ -39,6 +41,10 @@ const styles = StyleSheet.create({
 
 MainLayout.propTypes = {
   title: PropTypes.string.isRequired,
+  style: ViewPropTypes.style,
+  menuEnabled: PropTypes.bool,
+  onTitlePress: PropTypes.func,
+  onMenuPress: PropTypes.func,
 }
 
-export default MainLayout
+export default withNavigation(MainLayout)

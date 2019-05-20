@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1F0A2E',
   },
   abbreviation: { fontSize: 17, color: '#ECECEC', fontWeight: '600', letterSpacing: .7 },
-  name: { color: 'white', fontSize: 9, marginTop: 2},
+  name: { color: 'white', fontSize: 9, marginTop: 2, maxWidth: '91.5%', textAlign: 'center' },
   other: {
     flex: 1,
     flexDirection: 'row',
