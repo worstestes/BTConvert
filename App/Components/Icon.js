@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
 Icon.propTypes = {
     source: PropTypes.number.isRequired,
     style: ViewPropTypes.style,
-    onPres: PropTypes.func
+    onPress: PropTypes.func,
+    containerStyle: ViewPropTypes.style,
+    imageStyle: ViewPropTypes.style
 }
 
 export default Icon

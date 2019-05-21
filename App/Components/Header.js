@@ -30,12 +30,15 @@ class Header extends Component {
 const styles = StyleSheet.create({
   container: {
     height: 60,
-    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
     backgroundColor: '#ED9095',
     flexDirection: 'row',
+    shadowColor: '#000000',
+    shadowOpacity: 0.15,
+    shadowOffset: { width: 1, height: 2 },
+    shadowRadius: 5,
   },
   header: {
     flexDirection: 'row',
@@ -55,7 +58,7 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   titleStyle: ViewPropTypes.style,
   children: PropTypes.node,
-
+  onMenuPress: PropTypes.func
 }
 
 export default Header

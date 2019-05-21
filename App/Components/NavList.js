@@ -7,7 +7,9 @@ import NavListItem from './NavListItem'
 const NavList = ({ routes, currentRoute, onPress }) => (
   <View style={styles.container}>
     {routes.length
-      ? routes.map((route) => <NavListItem key={route} route={route} currentRoute={currentRoute} onPress={onPress} />)
+      ? routes.map((route) => (
+          <NavListItem key={route} route={route} currentRoute={currentRoute} onPress={onPress} />
+        ))
       : null}
   </View>
 )
@@ -25,7 +27,7 @@ const styles = StyleSheet.create({
 NavList.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.string).isRequired,
   currentRoute: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired
+  onPress: PropTypes.func.isRequired,
 }
 
 export default NavList

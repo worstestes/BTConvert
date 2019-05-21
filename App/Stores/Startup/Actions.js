@@ -1,9 +1,13 @@
 import { createActions } from 'reduxsauce'
 
 const { Types, Creators } = createActions({
-  // This action is triggered when the application starts
   startup: null,
+  fetchNewsSuccess: ['articles'],
+  fetchNewsFailure: ['errorMessage'],
+  fetchCurrenciesSuccess: ['currencies'],
+  fetchCurrenciesFailure: ['errorMessage'],
 })
 
 export const StartupTypes = Types
 export default Creators
+

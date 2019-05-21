@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { View, StyleSheet } from 'react-native'
-import SortingMenuItem from './SortingMenuItem'
+import SortingMenuButton from './SortingMenuButton'
 
 const SortingMenu = ({ options, selected, onOptionPress }) => {
   let optionButtons = options.map((option) => (
-      <SortingMenuItem 
+      <SortingMenuButton 
       key={option.type}
       option={option}
       selected={selected}

@@ -13,16 +13,15 @@ class MainLayout extends Component {
     const {
     title,
       children,
-      style,
       menuEnabled,
       onTitlePress,
-      onMenuPress,
+      containerStyle,
       navigation: { openDrawer }
     } = this.props
     const sortMenuIcon = onTitlePress ? <Icon source={chevron} imageStyle={{transform: [{ rotate: menuEnabled ? '180deg' : '0deg'}]}} onPress={onTitlePress} /> : null
 
     return (
-      <SafeAreaView style={styles.mainContainer}>
+      <SafeAreaView style={[styles.mainContainer, containerStyle]}>
         <Header title={title} onMenuPress={() => openDrawer()}>
             {sortMenuIcon}
         </Header>
@@ -35,16 +34,16 @@ class MainLayout extends Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#EFEFEF'
   },
 })
 
 MainLayout.propTypes = {
   title: PropTypes.string.isRequired,
-  style: ViewPropTypes.style,
+  containerStyle: ViewPropTypes.style,
   menuEnabled: PropTypes.bool,
   onTitlePress: PropTypes.func,
-  onMenuPress: PropTypes.func,
 }
 
 export default withNavigation(MainLayout)

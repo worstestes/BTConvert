@@ -1,26 +1,24 @@
 import React, { Component } from 'react'
-import NavigationService from 'App/Services/NavigationService'
+import { NavigationService } from 'App/Services/NavigationService'
 import AppNavigator from 'App/Navigators/AppNavigator'
 import { View } from 'react-native'
-import styles from './RootScreenStyle'
 import { connect } from 'react-redux'
 import StartupActions from 'App/Stores/Startup/Actions'
 import { PropTypes } from 'prop-types'
 
 class RootScreen extends Component {
   componentDidMount() {
-    // Run the startup saga when the application is starting
     this.props.startup()
-  }
+    this.props.fetchCurrencyData()
+    this.props.fetchNewsData()
+  }    
+
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={{flex: 1}}>
         <AppNavigator
-          // Initialize the NavigationService (see https://reactnavigation.org/docs/en/navigating-without-navigation-prop.html)
-          ref={(navigatorRef) => {
-            NavigationService.setTopLevelNavigator(navigatorRef)
-          }}
+          ref={(navigatorRef) => NavigationService.setTopLevelNavigator(navigatorRef)}
         />
       </View>
     )
@@ -29,15 +27,17 @@ class RootScreen extends Component {
 
 RootScreen.propTypes = {
   startup: PropTypes.func,
+  fetchData: PropTypes.func,
+  fetchNewsSuccess: PropTypes.func
 }
-
-const mapStateToProps = (state) => ({})
 
 const mapDispatchToProps = (dispatch) => ({
   startup: () => dispatch(StartupActions.startup()),
+  fetchCurrencyData: () => dispatch(StartupActions.fetchCurrenciesSuccess()),
+  fetchNewsData: () => dispatch(StartupActions.fetchNewsSuccess())
 })
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(RootScreen)

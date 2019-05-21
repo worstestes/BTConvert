@@ -1,18 +1,41 @@
-import { put } from 'redux-saga/effects'
-import ExampleActions from 'App/Stores/Example/Actions'
-import NavigationService from 'App/Services/NavigationService'
+import { put, call } from 'redux-saga/effects'
+import StartupActions from '../Stores/Startup/Actions'
+import { userService } from '../Services/UserService'
+import { NavigationService } from '../Services/NavigationService'
 
 /**
- * The startup saga is the place to define behavior to execute when the application starts.
+ * navigates to 'Home' route upon app startup in RootScreen
  */
 export function* startup() {
-  // Dispatch a redux action using `put()`
-  // @see https://redux-saga.js.org/docs/basics/DispatchingActions.html
-  yield put(ExampleActions.fetchUser())
-
-  // Add more operations you need to do at startup here
-  // ...
-
-  // When those operations are finished we redirect to the main screen
   NavigationService.navigateAndReset('Home')
+}
+
+/**
+ * fetches currency data of BTC price index converted to world fiat currencies
+ */
+export function* fetchCurrencyData() {
+  const currencies = yield call(userService.fetchCurrencyData)
+  currencies
+    ? yield put(StartupActions.fetchCurrenciesSuccess(currencies))
+    : yield put(
+        StartupActions.fetchCurrenciesFailure(
+          'There was an error while fetching currency information.'
+        )
+      )
+}
+
+/**
+ * fetches news articles related to bitcoin
+ * 
+ * expected: 
+ * news = {
+ * articles,
+ * featuredArticles
+ * }
+ */
+export function* fetchNewsData() {
+  const news = yield call(userService.fetchNews)
+  news
+  ? yield put(StartupActions.fetchNewsSuccess(news))
+  : StartupActions.fetchNewsFailure('There was an error while fetching news information.')
 }

@@ -37,7 +37,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* BitcoinConversionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BitcoinConversionTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		5525C530229342F500E0872C /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		5525C5312293433A00E0872C /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0476B7032256026D006BDB17 /* libRNGestureHandler.a */; };
+		558D26FB2293C673005CB959 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0476B7032256026D006BDB17 /* libRNGestureHandler.a */; };
 		63C37E8B2AC542F6BC4A8877 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB604BAD56CE40729982F1CB /* libRNGestureHandler-tvOS.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
@@ -381,7 +381,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5525C5312293433A00E0872C /* libRNGestureHandler.a in Frameworks */,
+				558D26FB2293C673005CB959 /* libRNGestureHandler.a in Frameworks */,
 				5525C530229342F500E0872C /* libRCTBlob.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,

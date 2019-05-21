@@ -2,25 +2,16 @@ import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import MainLayout from '../../Components/MainLayout'
 
-import MainText from '../../Components/MainText'
 import InfoText from '../../Components/InfoText'
-
+import MainText from '../../Components/MainText'
 import { ScrollView } from 'react-native-gesture-handler'
 
 class About extends Component {
-  state = {}
-
   render() {
     return (
       <MainLayout title="About" onMenuPress={() => openDrawer()}>
         <View style={styles.container}>
-          <ScrollView
-            contentContainerStyle={{
-              flexGrow: 2,
-              paddingTop: 10,
-              alignItems: 'center',
-            }}
-          >
+          <ScrollView contentContainerStyle={styles.scrollView}>
             <InfoText
               title="What is Bitcoin?"
               text="Bitcoin is a consensus network that enables a new payment system and a completely
@@ -43,6 +34,9 @@ class About extends Component {
               reward in bitcoins for this service. This is often called 'mining'. To learn more
               about Bitcoin, you can consult the dedicated page and the original paper."
             />
+            <MainText style={{ fontSize: 10, fontWeight: 'bold' }}>
+              Content shown attributed to bitcoin.org
+            </MainText>
           </ScrollView>
         </View>
       </MainLayout>
@@ -55,6 +49,12 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '95%',
     marginTop: 25,
+  },
+  scrollView: {
+    flexGrow: 2,
+    paddingTop: 10,
+    alignItems: 'center',
+    paddingBottom: 15,
   },
 })
 export default About

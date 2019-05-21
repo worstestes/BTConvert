@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
 })
 
 InfoText.propTypes = {
-    title: PropTypes.string,
-    text: PropTypes.text,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
 }
 
 export default InfoText

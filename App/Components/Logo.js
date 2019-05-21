@@ -6,10 +6,10 @@ import MainText from './MainText'
 
 const logoSource = require('../Images/logo.png')
 
-const Logo = () => (
+const Logo = ({ showText, imageStyle }) => (
   <View style={styles.container}>
-    <Icon source={logoSource} imageStyle={{ width: 100, height: 100 }} />
-    <MainText style={styles.text}>BTConversion</MainText>
+    <Icon source={logoSource} imageStyle={[{ width: 100, height: 100 }, imageStyle]} />
+    {showText ? <MainText style={styles.text}>BTConversion</MainText> : null}
   </View>
 )
 

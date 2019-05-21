@@ -1,35 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Text, Platform, StyleSheet } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 
 import { textColor } from '../Theme/Colors'
 
-const MainText = ({
-  style,
-  children,
-  highlight,
-  highlightColor,
-  bold,
-  onPress,
-}) => {
-
-  return (
-    <Text
-      style={[
-        styles.text,
-        style,
-        highlight
-          ? { color: highlightColor ? highlightColor : 'yellow' }
-          : null,
-        bold ? { fontWeight: 'bold' } : null,
-      ]}
-      onPress={onPress}
-    >
-      {children}
-    </Text>
-  )
-}
+const MainText = ({ style, children, highlight, highlightColor, onPress }) => (
+  <Text
+    style={[
+      styles.text,
+      style,
+      highlight ? { color: highlightColor ? highlightColor : 'yellow' } : null,
+    ]}
+    onPress={onPress}
+  >
+    {children}
+  </Text>
+)
 
 const styles = StyleSheet.create({
   text: {

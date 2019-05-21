@@ -1,29 +1,7 @@
-import { create } from 'apisauce'
-import { Config } from 'App/Config/index'
-
 import numeral from "numeral";
+import moment from "moment";
 import getSymbolFromCurrency from 'currency-symbol-map'
 import { mainCurrencies, northAmerica, europe, africa, southAmerica, asiaPacific } from '../Theme/Currencies'
-
-
-
-/**
- * This is an example of a service that connects to a 3rd party API.
- *
- * Feel free to remove this example from your application.
- */
-
-const userApiClient = create({
-  /**
-   * Import the config from the App/Config/index.js file
-   */
-  baseURL: Config.API_URL,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-  timeout: 3000,
-})
 
 const fetchCurrencyData = async () => {
   try{
@@ -59,30 +37,31 @@ const fetchCurrencyData = async () => {
   } catch(e) {
     console.error(e)
   }
+}
 
+const fetchNews = async () => {
+ try {
+  let newsSearch = "bitcoin";
+  let currentDay = moment().format("YYYY-MM-DD");
+  const URL = `https://newsapi.org/v2/everything?q=${newsSearch}&from=${currentDay}&sortBy=publishedat&apiKey=${'424849785c084263b27ef7a7461cb0be'}`;
+  const response = await fetch(URL);
+  const json = await response.json();
+  let filteredArticles = json.articles.filter(article => article.urlToImage !== null && article.urlToImage !== "")
 
-  // try {
-  //   let response = await fetch(
-  //     'https://api.coindesk.com/v1/bpi/currentprice.json',
-  //   );
-  //   let responseJson = await response.json();
+  let articles = filteredArticles.slice(3);
+  let featuredArticles = filteredArticles.slice(0, 3);
 
-  //   let currencyData = Object.values(responseJson.bpi).map(currency => ({
-  //     ...currency,
-      // key: currency.code,
-      // symbol: getSymbolFromCurrency(currency.code) ? getSymbolFromCurrency(currency.code) : null,
-      // rate_float: numeral(currency.rate_float).format("0,0.00"),
-      // code: null,
-  //   }))
-    
-
-  //   return currencyData
-  // } catch (e) {
-  //   console.error(e);
-  // }
+  return {
+    articles,
+    featuredArticles
+  }
+ } catch(e) {
+   console.error(e)
+ }
 }
 
 
 export const userService = {
   fetchCurrencyData,
+  fetchNews
 }

@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import configureStore from './CreateStore'
 import rootSaga from 'App/Sagas'
-import { reducer as ExampleReducer } from './Example/Reducers'
+import { reducer as StartupReducer } from './Startup/Reducers'
 
 export default () => {
   const rootReducer = combineReducers({
-    example: ExampleReducer,
+    startup: StartupReducer,
   })
 
   return configureStore(rootReducer, rootSaga)

@@ -111,3 +111,13 @@ export const middleEast = {
       CHF: 'CHF'
   }
   
+
+  export const sortingOptions = [
+    { name: 'All', type: null },
+    { name: 'Popular', type: 'mainCurrencies' },
+    { name: 'North American', type: 'northAmerica' },
+    { name: 'South American', type: 'southAmerica' },
+    { name: 'Asian/Pacific', type: 'asiaPacific' },
+    { name: 'African', type: 'africa' },
+    { name: 'European', type: 'europe' },
+  ]

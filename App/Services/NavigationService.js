@@ -1,11 +1,5 @@
 import { NavigationActions, StackActions } from 'react-navigation'
 
-/**
- * The navigation is implemented as a service so that it can be used outside of components, for example in sagas.
- *
- * @see https://reactnavigation.org/docs/en/navigating-without-navigation-prop.html
- */
-
 let navigator
 
 /**
@@ -54,7 +48,7 @@ function navigateAndReset(routeName, params) {
   )
 }
 
-export default {
+export const NavigationService = {
   navigate,
   navigateAndReset,
   setTopLevelNavigator,

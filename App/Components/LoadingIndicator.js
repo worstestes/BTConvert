@@ -1,6 +1,6 @@
 import React from 'react'
-
-import { ActivityIndicator } from 'react-native'
+import PropTypes from 'prop-types'
+import { ActivityIndicator, ViewPropTypes } from 'react-native'
 
 const LoadingIndicator = ({ size, color, style }) => (
   <ActivityIndicator
@@ -9,5 +9,11 @@ const LoadingIndicator = ({ size, color, style }) => (
     style={[{ flex: 1, width: '100%' }, style]}
   />
 )
+
+LoadingIndicator.propTypes = {
+  size: PropTypes.string,
+  color: PropTypes.string,
+  style: ViewPropTypes.style,
+}
 
 export default LoadingIndicator
