@@ -1,8 +1,8 @@
 # BTConvert
 
-Mobile application built app using React Native, Redux/Redux-Saga, and React Navigation. BTConvert allows you to convert BTC price index to your preferred world currencies, with conversion rates based on the live CoinDesk Bitcoin Price Index (Thanks to CoinDesk's great API!).
+Mobile application built app using React Native, Redux/Redux-Saga, and React Navigation. BTConvert allows you to convert the BTC price index to your preferred world currencies, with conversion rates based on the live CoinDesk Bitcoin Price Index (thanks to CoinDesk's great API!).
 
-Also feature additions made of an About page briefly explaining BTC as well as BTC related news section with Linking used from React Native. 
+Feature additions include a nAbout page briefly explaining BTC as well as BTC related news section with Linking used from React Native. 
 
 ## Features
 
