@@ -10,7 +10,13 @@ const menu = require('../Images/menu.png')
 class Header extends Component {
   render() {
     const { title, titleStyle, children, onMenuPress } = this.props
-    const menuIcon = <Icon source={menu} containerStyle={{ position: 'absolute', left: 12 }} onPress={onMenuPress} />
+    const menuIcon = (
+      <Icon
+        source={menu}
+        containerStyle={{ position: 'absolute', left: 12 }}
+        onPress={onMenuPress}
+      />
+    )
 
     const headerTitle = title ? (
       <MainText style={titleStyle ? titleStyle : styles.headerText}>{title}</MainText>
@@ -58,7 +64,7 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   titleStyle: ViewPropTypes.style,
   children: PropTypes.node,
-  onMenuPress: PropTypes.func
+  onMenuPress: PropTypes.func,
 }
 
 export default Header

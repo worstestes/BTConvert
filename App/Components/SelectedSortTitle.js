@@ -3,13 +3,24 @@ import PropTypes from 'prop-types'
 import { View, StyleSheet } from 'react-native'
 
 import MainText from './MainText'
+import Icon from './Icon'
 
-const SelectedSortTitle = ({ selected }) => (
+const chevron = require('../Images/chevron.png')
+
+
+
+const SelectedSortTitle = ({ selected, onPress }) => {
+  const chevronIcon = <Icon source={chevron} containerStyle={{ marginTop: 4 }} onPress={onPress} />
+
+return (
   <View style={styles.container}>
     <MainText style={styles.title}>Converted Bitcoin BPI to: </MainText>
+    <View style={styles.selectedSortContainer}>
     <MainText style={styles.selectedSort}>{selected} currencies</MainText>
+    {chevronIcon}
+    </View>
   </View>
-)
+)}
 
 const styles = StyleSheet.create({
   container: {
@@ -34,6 +45,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 5,
   },
+  selectedSortContainer: {
+    flexDirection: 'row', alignItems: 'center'
+  },
   selectedSort: {
     marginTop: 3,
     fontSize: 20,
@@ -46,6 +60,8 @@ const styles = StyleSheet.create({
 
 SelectedSortTitle.propTypes = {
   selected: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
+
 }
 
 export default SelectedSortTitle

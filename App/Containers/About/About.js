@@ -34,7 +34,7 @@ class About extends Component {
               reward in bitcoins for this service. This is often called 'mining'. To learn more
               about Bitcoin, you can consult the dedicated page and the original paper."
             />
-            <MainText style={{ fontSize: 10, fontWeight: 'bold' }}>
+            <MainText style={styles.footer}>
               Content shown attributed to bitcoin.org
             </MainText>
           </ScrollView>
@@ -56,5 +56,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 15,
   },
+  footer: { fontSize: 10, fontWeight: 'bold' }
 })
 export default About

@@ -8,11 +8,12 @@ import LoadingIndicator from '../../Components/LoadingIndicator'
 import SortingMenu from '../../Components/SortingMenu'
 import SelectedSortTitle from '../../Components/SelectedSortTitle'
 
-import { sortingOptions } from '../../Theme/Currencies'
+import { sortingOptions } from '../../Utils/Data/Currencies'
+import SplashScreen from '../SplashScreen/SplashScreen'
 
 class Home extends Component {
   state = {
-    selected: { name: 'Popular', type: null },
+    selected: { name: 'Popular', type: 'mainCurrencies' },
     sortingMenuEnabled: false,
   }
 
@@ -36,13 +37,17 @@ class Home extends Component {
     const { selected, sortingMenuEnabled } = this.state
     const { currencies } = this.props
 
-    let currencyData = currencies ? currencies : null
-    if (selected.type) {
+    if(!currencies) {
+      return <SplashScreen />
+    }
+
+    let currencyData = currencies ? currencies : []
+    if (selected.type && currencyData.length) {
       currencyData = currencyData.filter((currency) => currency.regionType[selected.type])
     }
 
     return (
-      <MainLayout title="Home" menuEnabled={sortingMenuEnabled} onTitlePress={this.onSortMenuPress}>
+      <MainLayout title="Home">
         {sortingMenuEnabled ? (
           <SortingMenu
             options={sortingOptions}
@@ -50,7 +55,7 @@ class Home extends Component {
             onOptionPress={this.onSelectSortType}
           />
         ) : (
-          <SelectedSortTitle selected={selected.name} />
+          <SelectedSortTitle selected={selected.name} onPress={this.onSortMenuPress} />
         )}
         {currencyData && currencyData.length ? (
           <CurrencyList data={currencyData} />

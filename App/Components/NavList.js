@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '90%',
-    borderTopWidth: 0.8,
-    borderColor: 'rgba(0,0,0,.45)',
-    paddingTop: 20,
+    borderTopWidth: 0.5,
+    borderColor: 'rgba(0,0,0,.25)',
+    paddingTop: 30,
   },
 })
 

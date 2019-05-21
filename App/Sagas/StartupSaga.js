@@ -4,14 +4,14 @@ import { userService } from '../Services/UserService'
 import { NavigationService } from '../Services/NavigationService'
 
 /**
- * navigates to 'Home' route upon app startup in RootScreen
+ * Navigates to 'Home' route upon app startup in RootScreen
  */
 export function* startup() {
   NavigationService.navigateAndReset('Home')
 }
 
 /**
- * fetches currency data of BTC price index converted to world fiat currencies
+ * Fetches currency data of BTC price index converted to world fiat currencies
  */
 export function* fetchCurrencyData() {
   const currencies = yield call(userService.fetchCurrencyData)
@@ -25,7 +25,7 @@ export function* fetchCurrencyData() {
 }
 
 /**
- * fetches news articles related to bitcoin
+ * Fetches news articles related to bitcoin
  * 
  * expected: 
  * news = {

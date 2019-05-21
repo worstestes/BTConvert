@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 
 import { Text, StyleSheet } from 'react-native'
 
-import { textColor } from '../Theme/Colors'
-
 const MainText = ({ style, children, highlight, highlightColor, onPress }) => (
   <Text
     style={[
@@ -21,7 +19,7 @@ const MainText = ({ style, children, highlight, highlightColor, onPress }) => (
 const styles = StyleSheet.create({
   text: {
     backgroundColor: 'transparent',
-    color: textColor,
+    color: '#303030',
     fontSize: 14,
   },
 })

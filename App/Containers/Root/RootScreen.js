@@ -30,6 +30,10 @@ RootScreen.propTypes = {
   fetchData: PropTypes.func,
   fetchNewsSuccess: PropTypes.func
 }
+const mapStateToProps = (state) => ({
+  currencies: state.startup.currencies,
+})
+
 
 const mapDispatchToProps = (dispatch) => ({
   startup: () => dispatch(StartupActions.startup()),
@@ -38,6 +42,6 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(RootScreen)

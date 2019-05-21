@@ -12,7 +12,6 @@
     "rename": "react-native-rename"
   },
   "dependencies": {
-    "apisauce": "^1.0.2",
     "currency-symbol-map": "^4.0.4",
     "moment": "^2.24.0",
     "numeral": "^2.0.6",

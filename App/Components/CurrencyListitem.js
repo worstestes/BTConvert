@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { View, StyleSheet } from 'react-native'
 import MainText from './MainText'
 
-const CurrencyListItem = ({ abbreviation, rate, symbol, name, }) => (
+const CurrencyListItem = ({ abbreviation, rate, symbol, name }) => (
   <View style={styles.container}>
     <View style={styles.nameContainer}>
       <MainText style={styles.abbreviation}>{abbreviation}</MainText>
       <MainText style={[styles.name, name.length > 20 ? { fontSize: 8 } : null]}>{name}</MainText>
     </View>
-    <View style={styles.other}>
+    <View style={styles.detailContainer}>
       <View style={styles.priceContainer}>
         <MainText style={{ fontWeight: '600', marginRight: 5, letterSpacing: 0.9 }}>
           {`${rate}`}
@@ -17,7 +17,7 @@ const CurrencyListItem = ({ abbreviation, rate, symbol, name, }) => (
       </View>
       <View style={styles.iconContainer}>
         <MainText style={{ color: 'cornflowerblue', fontSize: 15, fontWeight: '600' }}>
-          {symbol}
+          {symbol ? symbol : abbreviation}
         </MainText>
       </View>
     </View>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   abbreviation: { fontSize: 17, color: '#ECECEC', fontWeight: '600', letterSpacing: 0.7 },
   name: { color: 'white', fontSize: 9, marginTop: 2, maxWidth: '91.5%', textAlign: 'center' },
-  other: {
+  detailContainer: {
     flex: 1,
     flexDirection: 'row',
     height: 50,
@@ -78,6 +78,6 @@ CurrencyListItem.propTypes = {
   rate: PropTypes.string.isRequired,
   symbol: PropTypes.string,
   name: PropTypes.string.isRequired,
-  }
+}
 
 export default CurrencyListItem

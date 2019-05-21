@@ -12,7 +12,7 @@ class DrawerNavMenu extends Component {
     let routes = this.props.items.map((route) => route.routeName)
     return (
       <View style={styles.drawerContainer}>
-        <Logo />
+        <Logo showText={true}/>
         <NavList
           routes={routes}
           currentRoute={this.props.activeItemKey}

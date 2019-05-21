@@ -1,7 +1,7 @@
 import numeral from "numeral";
 import moment from "moment";
 import getSymbolFromCurrency from 'currency-symbol-map'
-import { mainCurrencies, northAmerica, europe, africa, southAmerica, asiaPacific } from '../Theme/Currencies'
+import { mainCurrencies, northAmerica, europe, africa, southAmerica, asiaPacific } from '../Utils/Data/Currencies'
 
 const fetchCurrencyData = async () => {
   try{

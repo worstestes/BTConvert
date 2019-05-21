@@ -13,7 +13,11 @@ const NavListItem = ({ route, currentRoute, onPress }) => (
 
 const styles = StyleSheet.create({
   container: { width: '100%', marginBottom: 15 },
-  text: { fontSize: 21, fontWeight: '200' },
+  text: { fontSize: 25, fontWeight: '200',
+  shadowColor: '#000000',
+  shadowOpacity: 0.09,
+  shadowOffset: { width: .5, height: 1 },
+  shadowRadius: 2, },
 })
 
 NavListItem.propTypes = {
